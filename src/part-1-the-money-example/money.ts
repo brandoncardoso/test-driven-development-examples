@@ -33,7 +33,7 @@ export class Money implements Expression {
 	}
 
 	plus(addend: Money): Expression {
-		return new Money(this.amount + addend.amount, this.currency)
+		return new Sum(this, addend)
 	}
 }
 
@@ -42,5 +42,15 @@ export interface Expression { }
 export class Bank {
 	reduce(source: Expression, to: string): Money {
 		return Money.dollar(10)
+	}
+}
+
+export class Sum implements Expression {
+	public augend: Money
+	public addend: Money
+
+	constructor(augend: Money, addend: Money) {
+		this.augend = augend
+		this.addend = addend
 	}
 }
