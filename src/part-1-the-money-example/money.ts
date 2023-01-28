@@ -8,11 +8,11 @@ export class Money {
 	}
 
 	static dollar(amount: number): Money {
-		return new Dollar(amount, 'USD')
+		return new Money(amount, 'USD')
 	}
 
 	static franc(amount: number): Money {
-		return new Franc(amount, 'CHF')
+		return new Money(amount, 'CHF')
 	}
 
 	times(multiplier: number): Money {
@@ -32,7 +32,3 @@ export class Money {
 		return `${this.amount} ${this.currency}`
 	}
 }
-
-export class Dollar extends Money { }
-
-export class Franc extends Money { }

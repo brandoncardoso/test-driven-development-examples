@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Franc, Money } from './money'
+import { Money } from './money'
 
 describe('Multi-Currency Money', () => {
 	it('should multiply dollars', () => {
@@ -11,8 +11,6 @@ describe('Multi-Currency Money', () => {
 	it('should check for equality', () => {
 		expect(Money.dollar(5).equals(Money.dollar(5))).to.be.true
 		expect(Money.dollar(5).equals(Money.dollar(6))).to.be.false
-		expect(Money.franc(5).equals(Money.franc(5))).to.be.true
-		expect(Money.franc(5).equals(Money.franc(6))).to.be.false
 		expect(Money.franc(5).equals(Money.dollar(5))).to.be.false
 	})
 
@@ -25,9 +23,5 @@ describe('Multi-Currency Money', () => {
 	it('should have currencies', () => {
 		expect(Money.dollar(1).getCurrency()).to.equal('USD')
 		expect(Money.franc(1).getCurrency()).to.equal('CHF')
-	})
-
-	it('should compare different Money classes', () => {
-		expect(new Money(10, 'CHF').equals(new Franc(10, 'CHF'))).to.be.true
 	})
 })
