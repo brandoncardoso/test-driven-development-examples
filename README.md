@@ -1,7 +1,9 @@
-# Test Driven Development Examples
-Examples from Test-Driven Development By Example by Kent Beck, in typescript.
+# Test Driven Development (TDD) Examples
+Examples from "Test-Driven Development By Example" by Kent Beck, in typescript.
 
-Each commit is one step in the TDD process, as shown in the book. To view only commits related to a specific part or chapter, checkout the related branch.
+Each commit is one step in the TDD process, as described in the book. There is a branch for each part/chapter, see the READMEs in the related src directory. 
+
+The commits in this repository do not reflect proper git usage while following TDD. You should probably not commit purposefully failing tests or code that does not compile, especially if you are working on the same repository/branch as other people.
 
 ## Setup
 To get started, run `npm install` to install all dependencies.
