@@ -58,4 +58,8 @@ export class WasRun extends TestCase {
 		self.wasRun = true
 		self.log += 'testMethod '
 	}
+
+	testBrokenMethod() {
+		throw new Error('test broken')
+	}
 }
