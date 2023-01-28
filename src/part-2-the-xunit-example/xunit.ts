@@ -1,6 +1,12 @@
 export class TestResult {
+	runCount = 0
+
+	testStarted() {
+		this.runCount += 1
+	}
+
 	summary() {
-		return '1 run, 0 failed'
+		return `${this.runCount} run, 0 failed`
 	}
 }
 
@@ -20,11 +26,13 @@ export class TestCase {
 	}
 
 	run(): TestResult {
+		const result = new TestResult()
+		result.testStarted()
 		this.setUp()
 		const method = this[this.name as keyof this] as (self: typeof this) => any
 		method(this)
 		this.tearDown()
-		return new TestResult()
+		return result
 	}
 }
 
