@@ -5,7 +5,11 @@ export class WasRun {
 		this.wasRun = false
 	}
 
-	testMethod() {
+	testMethod(): void {
 		this.wasRun = true
+	}
+
+	run(): void {
+		this.testMethod()
 	}
 }
