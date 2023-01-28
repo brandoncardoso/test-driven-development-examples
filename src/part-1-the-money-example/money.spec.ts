@@ -21,4 +21,9 @@ describe('Multi-Currency Money', () => {
 		expect(Money.franc(10).equals(five.times(2))).to.be.true
 		expect(Money.franc(15).equals(five.times(3))).to.be.true
 	})
+
+	it('should have currencies', () => {
+		expect(Money.dollar(1).currency()).to.equal('USD')
+		expect(Money.franc(1).currency()).to.equal('CHF')
+	})
 })
