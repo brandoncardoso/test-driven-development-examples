@@ -2,41 +2,42 @@ import { assert } from 'chai'
 import { TestCase, TestResult, TestSuite, WasRun } from './xunit'
 
 class TestCaseTest extends TestCase {
-	testTemplateMethod() {
+	result = new TestResult()
+
+	setUp() {
+		this.result = new TestResult()
+	}
+
+	testTemplateMethod(self: typeof this) {
 		const test = new WasRun('testMethod')
-		const result = new TestResult()
-		test.run(result)
+		test.run(self.result)
 		assert(test.log === 'setUp testMethod tearDown ')
 	}
 
-	testResult() {
+	testResult(self: typeof this) {
 		const test = new WasRun('testMethod')
-		const result = new TestResult()
-		test.run(result)
-		assert('1 run, 0 failed' === result.summary())
+		test.run(self.result)
+		assert('1 run, 0 failed' === self.result.summary())
 	}
 
-	testFailedResult() {
+	testFailedResult(self: typeof this) {
 		const test = new WasRun('testBrokenMethod')
-		const result = new TestResult()
-		test.run(result)
-		assert('1 run, 1 failed' === result.summary())
+		test.run(self.result)
+		assert('1 run, 1 failed' === self.result.summary())
 	}
 
-	testFailedResultFormatting() {
-		const result = new TestResult()
-		result.testStarted()
-		result.testFailed()
-		assert('1 run, 1 failed' === result.summary())
+	testFailedResultFormatting(self: typeof this) {
+		self.result.testStarted()
+		self.result.testFailed()
+		assert('1 run, 1 failed' === self.result.summary())
 	}
 
-	testSuite() {
+	testSuite(self: typeof this) {
 		const suite = new TestSuite()
 		suite.add(new WasRun('testMethod'))
 		suite.add(new WasRun('testBrokenMethod'))
-		const result = new TestResult()
-		suite.run(result)
-		assert('2 run, 1 failed' === result.summary())
+		suite.run(self.result)
+		assert('2 run, 1 failed' === self.result.summary())
 	}
 }
 
