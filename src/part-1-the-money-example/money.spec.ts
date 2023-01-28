@@ -67,4 +67,14 @@ describe('Multi-Currency Money', () => {
 		const result: Money = bank.reduce(fiveDollars.plus(tenFrancs), 'USD')
 		expect(result.equals(Money.dollar(10))).to.be.true
 	})
+
+	it('Sum.plus should add currencies', () => {
+		const fiveDollars: Expression = Money.dollar(5)
+		const tenFrancs: Expression = Money.franc(10)
+		const bank: Bank = new Bank()
+		bank.addRate('CHF', 'USD', 2)
+		const sum: Expression = new Sum(fiveDollars, tenFrancs).plus(fiveDollars)
+		const result: Money = bank.reduce(sum, 'USD')
+		expect(result.equals(Money.dollar(15))).to.be.true
+	})
 })
