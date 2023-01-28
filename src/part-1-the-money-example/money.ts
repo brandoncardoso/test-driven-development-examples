@@ -11,7 +11,6 @@ export class Money {
 }
 
 export class Dollar extends Money {
-
 	constructor(amount: number) {
 		super(amount)
 	}
@@ -21,19 +20,12 @@ export class Dollar extends Money {
 	}
 }
 
-export class Franc {
-	private amount: number
-
+export class Franc extends Money {
 	constructor(amount: number) {
-		this.amount = amount
+		super(amount)
 	}
 
 	times(multiplier: number): Franc {
 		return new Franc(this.amount * multiplier)
-	}
-
-	equals(object: object): boolean {
-		const franc = (object as Franc)
-		return this.amount === franc.amount
 	}
 }
