@@ -41,7 +41,9 @@ export interface Expression { }
 
 export class Bank {
 	reduce(source: Expression, to: string): Money {
-		return Money.dollar(10)
+		const sum: Sum = source as Sum
+		const amount: number = sum.augend.amount + sum.addend.amount
+		return new Money(amount, to)
 	}
 }
 
