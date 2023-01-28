@@ -9,10 +9,15 @@ export class TestCase {
 		console.log('set up')
 	}
 
+	tearDown(): void {
+		console.log('tear down')
+	}
+
 	run(): void {
 		this.setUp()
 		const method = this[this.name as keyof this] as (self: typeof this) => any
 		method(this)
+		this.tearDown()
 	}
 }
 
@@ -28,6 +33,10 @@ export class WasRun extends TestCase {
 	setUp(): void {
 		this.log = 'setUp '
 		this.wasRun = false
+	}
+
+	tearDown(): void {
+		this.log += 'tearDown '
 	}
 
 	testMethod(self: typeof this): void {
