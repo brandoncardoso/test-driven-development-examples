@@ -87,4 +87,9 @@ describe('Multi-Currency Money', () => {
 		const result: Money = bank.reduce(sum, 'USD')
 		expect(result.equals(Money.dollar(20))).to.be.true
 	})
+
+	it('Money.plus should return Money when adding the same currency', () => {
+		const sum: Expression = Money.dollar(1).plus(Money.dollar(1))
+		expect(sum instanceof Money).to.be.true
+	})
 })
