@@ -23,7 +23,7 @@ describe('Multi-Currency Money', () => {
 	})
 
 	it('should have currencies', () => {
-		expect(Money.dollar(1).currency()).to.equal('USD')
-		expect(Money.franc(1).currency()).to.equal('CHF')
+		expect(Money.dollar(1).getCurrency()).to.equal('USD')
+		expect(Money.franc(1).getCurrency()).to.equal('CHF')
 	})
 })

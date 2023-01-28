@@ -15,7 +15,7 @@ export abstract class Money {
 
 	abstract times(multiplier: number): Money
 
-	abstract currency(): string
+	abstract getCurrency(): string
 
 	equals(money: Money): boolean {
 		return this.amount === money.amount &&
@@ -24,12 +24,15 @@ export abstract class Money {
 }
 
 export class Dollar extends Money {
+	private currency: string
+
 	constructor(amount: number) {
 		super(amount)
+		this.currency = 'USD'
 	}
 
-	currency(): string {
-		return 'USD'
+	getCurrency(): string {
+		return this.currency
 	}
 
 	times(multiplier: number): Money {
@@ -38,12 +41,15 @@ export class Dollar extends Money {
 }
 
 export class Franc extends Money {
+	private currency: string
+
 	constructor(amount: number) {
 		super(amount)
+		this.currency = 'CHF'
 	}
 
-	currency(): string {
-		return 'CHF'
+	getCurrency(): string {
+		return this.currency
 	}
 
 	times(multiplier: number): Money {
