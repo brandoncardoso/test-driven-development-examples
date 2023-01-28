@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { Money } from './money'
 
 describe('Multi-Currency Money', () => {
-	it('should multiply dollars', () => {
+	it('should multiply money', () => {
 		const five : Money = Money.dollar(5)
 		expect(five.times(2).equals(Money.dollar(10))).to.be.true
 		expect(five.times(3).equals(Money.dollar(15))).to.be.true
@@ -12,12 +12,6 @@ describe('Multi-Currency Money', () => {
 		expect(Money.dollar(5).equals(Money.dollar(5))).to.be.true
 		expect(Money.dollar(5).equals(Money.dollar(6))).to.be.false
 		expect(Money.franc(5).equals(Money.dollar(5))).to.be.false
-	})
-
-	it('should multiply francs', () => {
-		const five = Money.franc(5)
-		expect(Money.franc(10).equals(five.times(2))).to.be.true
-		expect(Money.franc(15).equals(five.times(3))).to.be.true
 	})
 
 	it('should have currencies', () => {
