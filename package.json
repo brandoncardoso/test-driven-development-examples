@@ -2,8 +2,10 @@
 	"name": "tdd-examples",
 	"description": "TDD Examples",
 	"scripts": {
-		"test": "ts-mocha ./src/**/*.spec.ts",
-		"test:dev": "ts-mocha ./src/**/*.spec.ts -w --watch-files './src/**/*.ts'"
+		"test:part1": "ts-mocha ./src/part-1-the-money-example/**/*.spec.ts",
+		"test:part1:dev": "ts-mocha ./src/part-1-the-money-example/**/*.spec.ts -w --watch-files './src/part-1-the-money-example/**/*.ts'",
+		"test:part2": "ts-node ./src/part-2-the-xunit-example/xunit.test.ts",
+		"test:part2:dev": "nodemon --watch ./src/part-2-the-xunit-example/**/*.ts --exec 'ts-node' ./src/part-2-the-xunit-example/xunit.test.ts"
 	},
 	"license": "ISC",
 	"devDependencies": {
