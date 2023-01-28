@@ -32,5 +32,6 @@ export class WasRun extends TestCase {
 
 	testMethod(self: typeof this): void {
 		self.wasRun = true
+		self.log += 'testMethod '
 	}
 }
