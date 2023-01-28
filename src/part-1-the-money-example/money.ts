@@ -1,4 +1,4 @@
-export abstract class Money {
+export class Money {
 	protected amount: number
 	protected currency: string
 
@@ -15,7 +15,9 @@ export abstract class Money {
 		return new Franc(amount, 'CHF')
 	}
 
-	abstract times(multiplier: number): Money
+	times(multiplier: number): Money {
+		return this
+	}
 
 	getCurrency(): string {
 		return this.currency
@@ -25,16 +27,20 @@ export abstract class Money {
 		return this.amount === money.amount &&
 			this.constructor.name === money.constructor.name
 	}
+
+	toString(): string {
+		return `${this.amount} ${this.currency}`
+	}
 }
 
 export class Dollar extends Money {
 	times(multiplier: number): Money {
-		return Money.dollar(this.amount * multiplier)
+		return new Dollar(this.amount * multiplier, this.currency)
 	}
 }
 
 export class Franc extends Money {
 	times(multiplier: number): Money {
-		return Money.franc(this.amount * multiplier)
+		return new Money(this.amount * multiplier, this.currency)
 	}
 }
