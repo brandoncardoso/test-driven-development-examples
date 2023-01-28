@@ -20,7 +20,10 @@ describe('Multi-Currency Money', () => {
 	})
 
 	it('should do simple addition', () => {
-		const sum: Money = Money.dollar(5).plus(Money.dollar(5))
-		expect(sum.equals(Money.dollar(10))).to.be.true
+		const five = Money.dollar(5)
+		const sum: Expression = five.plus(five)
+		const bank: Bank = new Bank()
+		const reduced: Money = bank.reduce(sum, 'USD')
+		expect(reduced.equals(Money.dollar(10))).to.be.true
 	})
 })
