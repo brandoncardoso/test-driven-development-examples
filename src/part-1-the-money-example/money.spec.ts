@@ -9,4 +9,8 @@ describe('Multi-Currency Money', () => {
 		product = five.times(3)
 		expect(product).to.equal(15)
 	})
+
+	it('should check for equality', () => {
+		expect(new Dollar(5).equals(new Dollar(5))).to.be.true
+	})
 })
