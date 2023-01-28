@@ -9,6 +9,10 @@ export abstract class Money {
 		return new Dollar(amount)
 	}
 
+	static franc(amount: number): Money {
+		return new Franc(amount)
+	}
+
 	abstract times(multiplier: number): Money
 
 	equals(money: Money): boolean {

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Franc, Money } from './money'
+import { Money } from './money'
 
 describe('Multi-Currency Money', () => {
 	it('should multiply dollars', () => {
@@ -11,14 +11,14 @@ describe('Multi-Currency Money', () => {
 	it('should check for equality', () => {
 		expect(Money.dollar(5).equals(Money.dollar(5))).to.be.true
 		expect(Money.dollar(5).equals(Money.dollar(6))).to.be.false
-		expect(new Franc(5).equals(new Franc(5))).to.be.true
-		expect(new Franc(5).equals(new Franc(6))).to.be.false
-		expect(new Franc(5).equals(Money.dollar(5))).to.be.false
+		expect(Money.franc(5).equals(Money.franc(5))).to.be.true
+		expect(Money.franc(5).equals(Money.franc(6))).to.be.false
+		expect(Money.franc(5).equals(Money.dollar(5))).to.be.false
 	})
 
 	it('should multiply francs', () => {
-		const five = new Franc(5)
-		expect(new Franc(10).equals(five.times(2))).to.be.true
-		expect(new Franc(15).equals(five.times(3))).to.be.true
+		const five = Money.franc(5)
+		expect(Money.franc(10).equals(five.times(2))).to.be.true
+		expect(Money.franc(15).equals(five.times(3))).to.be.true
 	})
 })
