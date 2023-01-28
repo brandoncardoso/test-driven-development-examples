@@ -16,7 +16,7 @@ export class Money {
 	}
 
 	times(multiplier: number): Money {
-		return this
+		return new Money(this.amount * multiplier, this.currency)
 	}
 
 	getCurrency(): string {
@@ -33,14 +33,6 @@ export class Money {
 	}
 }
 
-export class Dollar extends Money {
-	times(multiplier: number): Money {
-		return new Money(this.amount * multiplier, this.currency)
-	}
-}
+export class Dollar extends Money { }
 
-export class Franc extends Money {
-	times(multiplier: number): Money {
-		return new Money(this.amount * multiplier, this.currency)
-	}
-}
+export class Franc extends Money { }
