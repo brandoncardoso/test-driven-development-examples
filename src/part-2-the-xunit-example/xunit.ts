@@ -26,11 +26,12 @@ export class WasRun extends TestCase {
 		this.wasSetup = false
 	}
 
-	testMethod(self: typeof this): void {
-		self.wasRun = true
+	setUp(): void {
+		this.wasRun = false
+		this.wasSetup = true
 	}
 
-	setUp(): void {
-		this.wasSetup = true
+	testMethod(self: typeof this): void {
+		self.wasRun = true
 	}
 }

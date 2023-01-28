@@ -2,17 +2,20 @@ import { assert } from 'chai'
 import { TestCase, WasRun } from './xunit'
 
 class TestCaseTest extends TestCase {
-	testRunning() {
-		const test = new WasRun('testMethod')
-		assert(!test.wasRun)
-		test.run()
-		assert(test.wasRun)
+	test: WasRun = new WasRun('testMethod')
+
+	setUp() {
+		this.test = new WasRun('testMethod')
 	}
 
-	testSetUp() {
-		const test = new WasRun('testMethod')
-		test.run()
-		assert(test.wasSetup)
+	testRunning(self: typeof this) {
+		self.test.run()
+		assert(self.test.wasRun)
+	}
+
+	testSetUp(self: typeof this) {
+		self.test.run()
+		assert(self.test.wasSetup)
 	}
 }
 new TestCaseTest('testRunning').run()
