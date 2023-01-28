@@ -18,4 +18,9 @@ describe('Multi-Currency Money', () => {
 		expect(Money.dollar(1).getCurrency()).to.equal('USD')
 		expect(Money.franc(1).getCurrency()).to.equal('CHF')
 	})
+
+	it('should do simple addition', () => {
+		const sum: Money = Money.dollar(5).plus(Money.dollar(5))
+		expect(sum.equals(Money.dollar(10))).to.be.true
+	})
 })
