@@ -73,7 +73,7 @@ export class Sum implements Expression {
 	}
 
 	reduce(bank: Bank, to: string): Money {
-		const amount = this.augend.amount + this.addend.amount
+		const amount = this.augend.reduce(bank, to).amount + this.addend.reduce(bank, to).amount
 		return new Money(amount, to)
 	}
 }
