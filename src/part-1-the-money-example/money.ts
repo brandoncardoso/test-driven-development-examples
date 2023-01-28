@@ -1,4 +1,4 @@
-export class Money {
+export class Money implements Expression {
 	protected amount: number
 	protected currency: string
 
@@ -32,7 +32,15 @@ export class Money {
 		return `${this.amount} ${this.currency}`
 	}
 
-	plus(addend: Money): Money {
+	plus(addend: Money): Expression {
 		return new Money(this.amount + addend.amount, this.currency)
+	}
+}
+
+export interface Expression { }
+
+export class Bank {
+	reduce(source: Expression, to: string): Money {
+		return Money.dollar(10)
 	}
 }

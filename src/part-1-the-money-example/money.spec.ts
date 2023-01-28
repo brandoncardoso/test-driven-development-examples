@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Money } from './money'
+import { Bank, Expression, Money } from './money'
 
 describe('Multi-Currency Money', () => {
 	it('should multiply money', () => {
