@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import { TestCase, TestResult, WasRun } from './xunit'
+import { TestCase, TestResult, TestSuite, WasRun } from './xunit'
 
 class TestCaseTest extends TestCase {
 	testTemplateMethod() {
@@ -31,7 +31,8 @@ class TestCaseTest extends TestCase {
 		const suite = new TestSuite()
 		suite.add(new WasRun('testMethod'))
 		suite.add(new WasRun('testBrokenMethod'))
-		const result = suite.run()
+		const result = new TestResult()
+		suite.run(result)
 		assert('2 run, 1 failed' === result.summary())
 	}
 }

@@ -30,8 +30,7 @@ export class TestCase {
 		console.log('tear down')
 	}
 
-	run(): TestResult {
-		const result = new TestResult()
+	run(result: TestResult): void {
 		result.testStarted()
 		this.setUp()
 		try {
@@ -41,7 +40,6 @@ export class TestCase {
 			result.testFailed()
 		}
 		this.tearDown()
-		return result
 	}
 }
 
@@ -70,5 +68,19 @@ export class WasRun extends TestCase {
 
 	testBrokenMethod() {
 		throw new Error('test broken')
+	}
+}
+
+export class TestSuite {
+	tests: TestCase[] = []
+
+	add(test: TestCase): void {
+		this.tests.push(test)
+	}
+
+	run(result: TestResult): void {
+		for (const test of this.tests) {
+			test.run(result)
+		}
 	}
 }
