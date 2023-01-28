@@ -4,19 +4,22 @@ import { TestCase, TestResult, TestSuite, WasRun } from './xunit'
 class TestCaseTest extends TestCase {
 	testTemplateMethod() {
 		const test = new WasRun('testMethod')
-		test.run()
+		const result = new TestResult()
+		test.run(result)
 		assert(test.log === 'setUp testMethod tearDown ')
 	}
 
 	testResult() {
 		const test = new WasRun('testMethod')
-		const result = test.run()
+		const result = new TestResult()
+		test.run(result)
 		assert('1 run, 0 failed' === result.summary())
 	}
 
 	testFailedResult() {
 		const test = new WasRun('testBrokenMethod')
-		const result = test.run()
+		const result = new TestResult()
+		test.run(result)
 		assert('1 run, 1 failed' === result.summary())
 	}
 
@@ -37,7 +40,11 @@ class TestCaseTest extends TestCase {
 	}
 }
 
-console.log(new TestCaseTest('testTemplateMethod').run().summary())
-console.log(new TestCaseTest('testResult').run().summary())
-console.log(new TestCaseTest('testFailedResultFormatting').run().summary())
-console.log(new TestCaseTest('testFailedResult').run().summary())
+const suite = new TestSuite()
+suite.add(new TestCaseTest('testTemplateMethod'))
+suite.add(new TestCaseTest('testResult'))
+suite.add(new TestCaseTest('testFailedResultFormatting'))
+suite.add(new TestCaseTest('testFailedResult'))
+const result = new TestResult()
+suite.run(result)
+console.log(result.summary())
