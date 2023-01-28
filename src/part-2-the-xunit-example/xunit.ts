@@ -1,3 +1,9 @@
+export class TestResult {
+	summary() {
+		return '1 run, 0 failed'
+	}
+}
+
 export class TestCase {
 	protected name: string
 
@@ -13,11 +19,12 @@ export class TestCase {
 		console.log('tear down')
 	}
 
-	run(): void {
+	run(): TestResult {
 		this.setUp()
 		const method = this[this.name as keyof this] as (self: typeof this) => any
 		method(this)
 		this.tearDown()
+		return new TestResult()
 	}
 }
 
