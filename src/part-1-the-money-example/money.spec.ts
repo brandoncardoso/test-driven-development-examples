@@ -58,4 +58,13 @@ describe('Multi-Currency Money', () => {
 	it('should have a rate of 1 when reducing money of the same currency', () => {
 		expect(new Bank().rate('USD', 'USD')).to.equal(1)
 	})
+
+	it('should add money of mixed currencies', () => {
+		const fiveDollars: Expression = Money.dollar(5)
+		const tenFrancs: Expression = Money.franc(10)
+		const bank: Bank = new Bank()
+		bank.addRate('CHF', 'USD', 2)
+		const result: Money = bank.reduce(fiveDollars.plus(tenFrancs), 'USD')
+		expect(result.equals(Money.dollar(10))).to.be.true
+	})
 })
