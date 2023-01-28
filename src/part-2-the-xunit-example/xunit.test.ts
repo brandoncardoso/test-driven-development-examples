@@ -26,6 +26,14 @@ class TestCaseTest extends TestCase {
 		result.testFailed()
 		assert('1 run, 1 failed' === result.summary())
 	}
+
+	testSuite() {
+		const suite = new TestSuite()
+		suite.add(new WasRun('testMethod'))
+		suite.add(new WasRun('testBrokenMethod'))
+		const result = suite.run()
+		assert('2 run, 1 failed' === result.summary())
+	}
 }
 
 console.log(new TestCaseTest('testTemplateMethod').run().summary())
