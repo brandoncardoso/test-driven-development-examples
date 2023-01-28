@@ -54,4 +54,8 @@ describe('Multi-Currency Money', () => {
 		const result = bank.reduce(Money.franc(2), 'USD')
 		expect(result.equals(Money.dollar(1))).to.be.true
 	})
+
+	it('should have a rate of 1 when reducing money of the same currency', () => {
+		expect(new Bank().rate('USD', 'USD')).to.equal(1)
+	})
 })
