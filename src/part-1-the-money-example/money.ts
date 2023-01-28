@@ -1,5 +1,5 @@
 export class Money implements Expression {
-	protected amount: number
+	public amount: number
 	protected currency: string
 
 	constructor(amount: number, currency: string) {
@@ -42,8 +42,7 @@ export interface Expression { }
 export class Bank {
 	reduce(source: Expression, to: string): Money {
 		const sum: Sum = source as Sum
-		const amount: number = sum.augend.amount + sum.addend.amount
-		return new Money(amount, to)
+		return sum.reduce(to)
 	}
 }
 
@@ -54,5 +53,10 @@ export class Sum implements Expression {
 	constructor(augend: Money, addend: Money) {
 		this.augend = augend
 		this.addend = addend
+	}
+
+	reduce(to: string): Money {
+		const amount = this.augend.amount + this.addend.amount
+		return new Money(amount, to)
 	}
 }
