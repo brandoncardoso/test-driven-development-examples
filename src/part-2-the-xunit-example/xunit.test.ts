@@ -28,6 +28,7 @@ class TestCaseTest extends TestCase {
 	}
 }
 
-new TestCaseTest('testTemplateMethod').run()
-new TestCaseTest('testResult').run()
-new TestCaseTest('testFailedResult').run()
+console.log(new TestCaseTest('testTemplateMethod').run().summary())
+console.log(new TestCaseTest('testResult').run().summary())
+console.log(new TestCaseTest('testFailedResultFormatting').run().summary())
+console.log(new TestCaseTest('testFailedResult').run().summary())
