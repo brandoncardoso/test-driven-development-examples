@@ -1,11 +1,6 @@
 import { assert } from 'chai'
 import { TestCase, WasRun } from './xunit'
 
-const test = new WasRun('testMethod')
-console.log(test.wasRun)
-test.run()
-console.log(test.wasRun)
-
 class TestCaseTest extends TestCase {
 	testRunning() {
 		const test = new WasRun('testMethod')
@@ -13,5 +8,12 @@ class TestCaseTest extends TestCase {
 		test.run()
 		assert(test.wasRun)
 	}
+
+	testSetUp() {
+		const test = new WasRun('testMethod')
+		test.run()
+		assert(test.wasSetup)
+	}
 }
 new TestCaseTest('testRunning').run()
+new TestCaseTest('testSetUp').run()
