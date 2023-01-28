@@ -18,17 +18,16 @@ export class TestCase {
 
 export class WasRun extends TestCase {
 	wasRun: boolean
-	wasSetup: boolean
+	log = ''
 
 	constructor(name: string) {
 		super(name)
 		this.wasRun = false
-		this.wasSetup = false
 	}
 
 	setUp(): void {
+		this.log = 'setUp '
 		this.wasRun = false
-		this.wasSetup = true
 	}
 
 	testMethod(self: typeof this): void {

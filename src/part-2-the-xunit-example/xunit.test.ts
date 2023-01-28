@@ -15,7 +15,7 @@ class TestCaseTest extends TestCase {
 
 	testSetUp(self: typeof this) {
 		self.test.run()
-		assert(self.test.wasSetup)
+		assert(self.test.log === 'setUp ')
 	}
 }
 new TestCaseTest('testRunning').run()
