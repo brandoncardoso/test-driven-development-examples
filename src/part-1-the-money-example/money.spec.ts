@@ -34,4 +34,11 @@ describe('Multi-Currency Money', () => {
 		expect(five).to.equal(sum.augend)
 		expect(five).to.equal(sum.addend)
 	})
+
+	it('should reduce a sum', () => {
+		const sum: Expression = new Sum(Money.dollar(3), Money.dollar(4))
+		const bank: Bank = new Bank()
+		const result: Money = bank.reduce(sum, 'USD')
+		expect(result.equals(Money.dollar(7))).to.be.true
+	})
 })
