@@ -18,4 +18,3 @@
 | Chapter 14: Change | `part1-chapter14` |
 | Chapter 15: Mixed Currencies | `part1-chapter15` |
 | Chapter 16: Abstraction, Finally | `part1-chapter16` |
-| Chapter 17: Money Retrospective | `part1-chapter17` |
